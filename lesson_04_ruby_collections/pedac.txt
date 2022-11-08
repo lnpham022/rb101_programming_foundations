@@ -1,0 +1,18 @@
+=begin
+PROBLEM:
+
+  - 
+
+  INPUT: 
+  OUTPUT: 
+
+EXAMPLES:
+  GOAL: 
+
+DATA:
+  
+
+ALGORITHM:
+  1. 
+
+=end
