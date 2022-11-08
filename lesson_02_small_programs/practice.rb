@@ -23,14 +23,6 @@ build a mortgage calculator
       - j = monthly interest rate = APR / 12
       - n = loan duration in months (given)
 
-  INPUT:
-  OUTPUT:
-
-EXAMPLES:
-  GOAL:
-
-DATA:
-
 ALGORITHM:
   1. Get loan amount, annual percentage rate, and loan duration from user
   2. Calculate monthly interest rate
@@ -102,3 +94,4 @@ loop do # main loop
 end
 
 prompt("Thank you for using the Mortgage Calculator!")
+prompt("Goodbye!")
