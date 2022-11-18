@@ -5,4 +5,4 @@ flintstones = { "Fred" => 0, "Wilma" => 1, "Barney" => 2, "Betty" => 3, "BamBam"
 
 barney = flintstones.assoc("Barney")
 
-p barney
+p barney  # ["Barney", 2]

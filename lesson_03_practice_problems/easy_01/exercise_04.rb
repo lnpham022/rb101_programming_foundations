@@ -5,8 +5,8 @@ Two of them have very similar names. Let's see how they differ:
 
 numbers = [1, 2, 3, 4, 5]
 
-numbers.delete_at(1)
-numbers.delete(1)
+numbers.delete_at(1)  # => 2
+numbers.delete(1)  # => 1
 
 =begin
 What do the following method calls do (assume we reset numbers to the original 
@@ -17,8 +17,6 @@ numbers.delete_at(1)
   return value is the deleted element
 
 numbers.delete(1)
-  delete method deletes all items in the array that are equal to the
-  specified object 
+  delete method deletes all items in the array that are equal to the specified object 
   return value is the last deleted object
-
 =end
