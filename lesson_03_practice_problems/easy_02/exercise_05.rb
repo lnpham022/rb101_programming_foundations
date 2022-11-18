@@ -3,5 +3,5 @@ flintstones = ["Fred", "Barney", "Wilma", "Betty", "BamBam", "Pebbles"]
 
 flinstones_easier = %w(Fred Barney Wilma Betty BamBam Pebbles)
 
-p flintstones
-p flinstones_easier
+p flintstones        # ["Fred", "Barney", "Wilma", "Betty", "BamBam", "Pebbles"]
+p flinstones_easier  # ["Fred", "Barney", "Wilma", "Betty", "BamBam", "Pebbles"]

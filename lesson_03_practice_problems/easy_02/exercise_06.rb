@@ -3,4 +3,4 @@ flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
 
 flintstones << "Dino"
 
-p flintstones
+p flintstones  # ["Fred", "Barney", "Wilma", "Betty", "BamBam", "Pebbles", "Dino"]
