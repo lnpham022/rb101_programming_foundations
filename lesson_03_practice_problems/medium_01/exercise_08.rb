@@ -1,7 +1,7 @@
 # Method calls can take expressions as arguments. 
-# Suppose we define a method called rps as follows, 
-# which follows the classic rules of rock-paper-scissors game: 
-# it returns the winning fist or, in the case of a tie, the fist that both players played.
+# Suppose we define a method called rps as follows, which follows the classic rules of rock-paper-scissors game: 
+  # It returns the winning fist or, in the case of a tie, the fist that both players played.
+
 def rps(fist1, fist2)
   if fist1 == "rock"
     (fist2 == "paper") ? "paper" : "rock"

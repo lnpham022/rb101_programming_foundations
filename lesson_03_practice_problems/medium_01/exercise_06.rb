@@ -3,7 +3,7 @@
 answer = 42
 
 def mess_with_it(some_number)
-  some_number += 8
+  some_number += 8 # reassignmment -- non mutating
 end
 
 new_answer = mess_with_it(answer)

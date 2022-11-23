@@ -1,4 +1,5 @@
 # Consider these two simple methods:
+
 def foo(param = "no")
   "yes"
 end
