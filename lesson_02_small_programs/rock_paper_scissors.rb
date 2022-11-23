@@ -1,19 +1,17 @@
-require 'rubocop'
-
-VALID_CHOICES = %w(rock paper scissors lizard spock)
-
-WIN_COMBOS = { 'rock' => ['scissors', 'lizard'],
-               'paper' => ['rock', 'spock'],
-               'scissors' => ['paper', 'lizard'],
-               'lizard' => ['paper', 'spock'],
-               'spock' => ['scissors', 'rock'] }
+MOVES = {
+  'rock' => { abbreviation: 'r', beats: ['scissors', 'lizard'] },
+  'lizard' => { abbreviation: 'l', beats: ['spock,', 'paper'] },
+  'spock' => { abbreviation: 'sp', beats: ['scissors', 'rock'] },
+  'paper' => { abbreviation: 'p', beats: ['spock', 'rock'] },
+  'scissors' => { abbreviation: 'sc', beats: ['paper', 'lizard'] }
+}
 
 def prompt(message)
   puts "=> #{message}"
 end
 
 def win?(first, second)
-  WIN_COMBOS[first].include?(second)
+  MOVES[first][:beats].include?(second)
 end
 
 def display_results(player, computer, name)
@@ -34,14 +32,12 @@ def match_winner(player, computer, name)
   end
 end
 
-def simple_choices(choice)
-  case choice
-  when 'p' then 'paper'
-  when 'r' then 'rock'
-  when 'sc' then 'scissors'
-  when 'sp' then 'spock'
-  when 'l' then 'lizard'
-  end
+def valid_choice?(choice)
+  MOVES.keys.include?(choice) || MOVES.map { |_, v| v[:abbreviation] }.include?(choice)
+end
+
+def player_choice(choice)
+  MOVES.keys.select { |key| key.start_with?(choice) }[0]
 end
 
 system("clear")
@@ -49,9 +45,10 @@ system("clear")
 name = ''
 loop do
   prompt("Please enter your name.")
-  name = gets.chomp.capitalize
+  name = gets.chomp.strip.capitalize
 
   if name.empty?
+    system("clear")
     prompt("Please enter a valid name.")
   else
     break
@@ -74,17 +71,15 @@ loop do # main loop
   prompt("Each match will continue until you or the computer scores 3 points.")
 
   choice = ''
-  computer_score = 0
-  player_score = 0
+  scores = { computer: 0, player: 0 }
 
   loop do # match rounds
     loop do
       puts(operator_prompt)
       choice = gets.chomp.downcase
-      if VALID_CHOICES.include?(choice)
-        break
-      elsif simple_choices(choice)
-        choice = simple_choices(choice)
+
+      if valid_choice?(choice)
+        choice = player_choice(choice)
         break
       else
         system("clear")
@@ -92,7 +87,7 @@ loop do # main loop
       end
     end
 
-    computer_choice = VALID_CHOICES.sample
+    computer_choice = MOVES.keys.sample
 
     system("clear")
 
@@ -100,16 +95,16 @@ loop do # main loop
     display_results(choice, computer_choice, name)
 
     if win?(choice, computer_choice)
-      player_score += 1
+      scores[:player] += 1
     elsif win?(computer_choice, choice)
-      computer_score += 1
+      scores[:computer] += 1
     end
 
-    prompt("#{name}: #{player_score}. Computer: #{computer_score}.")
+    prompt("#{name}: #{scores[:player]}. Computer: #{scores[:computer]}.")
 
-    match_winner(player_score, computer_score, name)
+    match_winner(scores[:player], scores[:computer], name)
 
-    break if player_score == 3 || computer_score == 3
+    break if scores[:player] == 3 || scores[:computer] == 3
   end
 
   prompt("Do you want to play again?")
