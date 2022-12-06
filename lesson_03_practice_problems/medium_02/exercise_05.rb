@@ -1,11 +1,6 @@
-# Depending on a method to modify its arguments can be tricky:
-# Whether the above "coincidentally" does what we think we wanted 
-  # depends upon what is going on inside the method.
-
-# How can we change this code to make the result easier to predict
-  # and easier for the next programmer to maintain? That is, the resulting 
-  # method should not mutate either argument, but my_string should be set 
-  # to 'pumpkinsrutabaga' and my_array should be set to ['pumpkins', 'rutabaga']
+# How can we change this code to make the result easier to predict and easier for the next programmer to maintain? 
+  # That is, the resulting method should not mutate either argument.
+  # my_string should be set to 'pumpkinsrutabaga' and my_array should be set to ['pumpkins', 'rutabaga']
 
 def tricky_method(a_string_param, an_array_param)
   a_string_param += "rutabaga"
